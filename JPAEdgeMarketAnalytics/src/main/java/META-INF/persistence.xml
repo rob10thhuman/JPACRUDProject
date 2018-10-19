@@ -7,7 +7,7 @@
   <persistence-unit name="EdgeMarketAnalytics">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
-
+	<class>com.skilldistillery.edgemarketanalytics.entities.House</class>
     <properties>
       <property name="javax.persistence.jdbc.url"
         value="jdbc:mysql://localhost:3306/houses?useSSL=false" />
