@@ -1,6 +1,7 @@
 package com.skilldistillery.edgemarketing.controllers;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -109,5 +110,31 @@ public class HouseMVCController {
 		return mv;
 	}
 	
+	@RequestMapping(path="getAVGYTD.do", method = RequestMethod.GET)
+	public ModelAndView getAvgPriceYTD() throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		Double stat; 
+		stat = housedao.getAvgPriceYTD();
+		System.out.println("stat after retrieval: " + "\n" + stat);
+		mv.addObject("stat", stat);
+		mv.setViewName("WEB-INF/views/stats.jsp");
+
+		return mv;
+
+	}
+	
+	@RequestMapping(path="getAVGYTDStats.do", method = RequestMethod.GET)
+	public ModelAndView getAvgYTDStats() throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		List<Double> stats; 
+		stats = housedao.getAvgPriceYTDStats();
+		System.out.println("stat after retrieval: " + "\n" + stats);
+//		String stats1 = String.valueOf(stats.get(0));
+		mv.addObject("stats", stats);
+		mv.setViewName("WEB-INF/views/stats.jsp");
+
+		return mv;
+
+	}
 
 }

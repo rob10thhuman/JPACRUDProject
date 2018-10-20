@@ -21,6 +21,13 @@
 					<li>Average house stats: ${stats }</li>
 				</ul>
 		</c:when>
+		
+		<c:when test="${not empty stats1}">
+				<ul>
+					<li>Average house stats: ${stats1 }</li>
+				</ul>
+		</c:when>
+		
 		<c:when test="${not empty agentstat}">
 				<ul>
 					<li>Agent YTD sales: <fmt:formatNumber type="currency" value="${agentstat }"/></li>
@@ -34,7 +41,7 @@
 		</c:otherwise>
 	</c:choose>
 	
-	<form action="index.do">
+	<form action="home.do">
 		<input type="submit" value="Home">
 	</form>
 </body>

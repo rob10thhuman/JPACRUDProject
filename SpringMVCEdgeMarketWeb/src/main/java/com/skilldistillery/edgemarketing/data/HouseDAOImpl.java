@@ -1,6 +1,8 @@
 package com.skilldistillery.edgemarketing.data;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -20,25 +22,25 @@ public class HouseDAOImpl implements HouseDAO {
 
 	@Override
 	public House getHouseById(int id) {
-		
+
 		House house = null;
-		
+
 		String query = "SELECT h FROM House h where id= :id";
 
 		house = em.createQuery(query, House.class).setParameter("id", id).getSingleResult();
-		
+
 		return house;
 	}
-	
+
 	@Override
 	public House getHouseByMLS(String mls) {
-		
+
 		House house = null;
-		
+
 		String query = "SELECT h FROM House h where mls= :mls";
 
 		house = em.createQuery(query, House.class).setParameter("mls", mls).getSingleResult();
-		
+
 		return house;
 	}
 
@@ -58,13 +60,13 @@ public class HouseDAOImpl implements HouseDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public House addHouse(House house) {
-		
+
 		em.persist(house);
 		em.flush();
-		
+
 		return house;
 	}
 
@@ -72,38 +74,58 @@ public class HouseDAOImpl implements HouseDAO {
 	public House editHouse(String mls) {
 		House house = null;
 		String query = "SELECT h FROM House h where mls= :mls";
-		house = em.createQuery(query, House.class).setParameter("mls", mls).getSingleResult();		
-		
+		house = em.createQuery(query, House.class).setParameter("mls", mls).getSingleResult();
+
 		return house;
 	}
 
-//	@Override
-//	public House updateHouse(House house) {
-//		
-//		house = em.find(House.class, house.getId());
-//		em.merge(house);
-//		
-//		return house;
-//	}
-	
 	@Override
 	public House updateHouse(int id, House updatedHouse) {
-		
+
 		House house = em.find(House.class, id);
-		
+
 		house.setAddress(updatedHouse.getAddress());
-		
+
 		return house;
 	}
-	
+
 	public Double getAvgPrice() {
-		
-//		House house = null; 
-		String sql = "select avg(close_price) from house";
-		Double stat = em.createQuery(sql, Double.class).getSingleResult();
-		
+		Double stat = null;
+
+		String sql = "select avg(h.closedPrice)from House h";
+//		SELECT AVG(e.salary) FROM Professor e")
+		stat = em.createQuery(sql, Double.class).getSingleResult();
+
 		return stat;
-		
+
+	}
+
+	public Double getAvgPriceYTD() {
+		Double stat = null;
+		String sql = "select avg(h.closedPrice)from House h where h.closedDate>=\'2018-10-01\'";
+		stat = em.createQuery(sql, Double.class).getSingleResult();
+		return stat;
+	}
+
+//	public List<Double> getAvgPriceYTDStats() throws SQLException {
+//		String sql = "select avg(h.closedPrice), avg(h.soldConcessions) from House h where h.closedDate>=\'2018-01-01\'";
+//		
+//		List<Double> avgSalesYTD = em.createQuery(sql, Double.class).getResultList();
+//		
+//		System.out.println("**************************");
+//		System.out.println(avgSalesYTD);
+//		
+//		return avgSalesYTD;
+//	}
+
+	public List<Double> getAvgPriceYTDStats() throws SQLException {
+
+		List<Double>stats  = 
+				em.createQuery(
+				"select avg(h.closedPrice), avg(h.soldConcessions) from House h where h.closedDate>=\'2018-01-01\'")
+				.getResultList();
+
+		return stats;
 	}
 
 	@Override
@@ -118,6 +140,5 @@ public class HouseDAOImpl implements HouseDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 
 }

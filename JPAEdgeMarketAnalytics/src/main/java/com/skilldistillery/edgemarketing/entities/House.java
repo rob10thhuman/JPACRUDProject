@@ -36,6 +36,9 @@ public class House {
 	
 	@Column(name="close_price")
 	private Double closedPrice;
+	
+	@Column(name="sold_concessions")
+	private Double soldConcessions;
 
 	public int getId() {
 		return id;

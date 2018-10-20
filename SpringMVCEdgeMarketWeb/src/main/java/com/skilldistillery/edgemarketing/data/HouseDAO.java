@@ -1,5 +1,7 @@
 package com.skilldistillery.edgemarketing.data;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.skilldistillery.edgemarketing.entities.House;
@@ -16,5 +18,7 @@ public interface HouseDAO {
 //	House updateHouse(House house);
 	House updateHouse(int id, House updatedHouse);
 	Double getAvgPrice(); 
+	Double getAvgPriceYTD(); 
+	List<Double> getAvgPriceYTDStats() throws SQLException;
 
 }
