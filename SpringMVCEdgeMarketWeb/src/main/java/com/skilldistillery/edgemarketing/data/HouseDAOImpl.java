@@ -1,5 +1,6 @@
 package com.skilldistillery.edgemarketing.data;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -76,6 +77,35 @@ public class HouseDAOImpl implements HouseDAO {
 		return house;
 	}
 
+//	@Override
+//	public House updateHouse(House house) {
+//		
+//		house = em.find(House.class, house.getId());
+//		em.merge(house);
+//		
+//		return house;
+//	}
+	
+	@Override
+	public House updateHouse(int id, House updatedHouse) {
+		
+		House house = em.find(House.class, id);
+		
+		house.setAddress(updatedHouse.getAddress());
+		
+		return house;
+	}
+	
+	public Double getAvgPrice() {
+		
+//		House house = null; 
+		String sql = "select avg(close_price) from house";
+		Double stat = em.createQuery(sql, Double.class).getSingleResult();
+		
+		return stat;
+		
+	}
+
 	@Override
 	public boolean deleteHouse(int id) {
 		House house = em.find(House.class, id);
@@ -88,5 +118,6 @@ public class HouseDAOImpl implements HouseDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 }

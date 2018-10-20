@@ -39,7 +39,7 @@
 	<h3>Delete a house</h3>
 	
 	<form action="deleteHouse.do" method="GET">
-		House ID#: <input type="text" name="id" value="Enter MLS number" />
+		House ID#: <input type="text" name="id" value="Enter ID number" />
 		<input type="submit" value="Delete a house" />
 	</form>
 	

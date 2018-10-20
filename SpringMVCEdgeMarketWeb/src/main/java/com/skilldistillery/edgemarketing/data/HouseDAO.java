@@ -13,6 +13,8 @@ public interface HouseDAO {
 	House getHouseByMLS(String mls);
 	House addHouse(House house);
 	boolean deleteHouse(int id);
-	House updateHouse(House house); 
+//	House updateHouse(House house);
+	House updateHouse(int id, House updatedHouse);
+	Double getAvgPrice(); 
 
 }

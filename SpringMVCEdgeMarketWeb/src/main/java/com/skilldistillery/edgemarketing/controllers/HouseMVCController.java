@@ -87,16 +87,27 @@ public class HouseMVCController {
 		return mv;
 	}
 	
-	@RequestMapping(path="UpdateHouse.do", method = RequestMethod.GET)
-	public ModelAndView updateHouse(House house) throws SQLException {
+	@RequestMapping(path="updateHouse.do", method = RequestMethod.GET)
+	public ModelAndView updateHouse(int id, House updatedHouse) throws SQLException {
 		ModelAndView mv = new ModelAndView();
-		house = housedao.updateHouse(house);
-		mv.addObject("house", house);
-		mv.setViewName("WEB-INF/views/editHouse.jsp");
+		updatedHouse = housedao.updateHouse(id, updatedHouse);
+		mv.addObject("house", updatedHouse);
+		mv.setViewName("WEB-INF/views/result.jsp");
 		
 		return mv;
 	}
 	
+	@RequestMapping(path="getAVG.do", method = RequestMethod.GET)
+	public ModelAndView getAvgPrice() throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		Double stat; 
+		stat = housedao.getAvgPrice();
+		System.out.println("stat after retrieval: " + "\n" + stat);
+		mv.addObject("stat", stat);
+		mv.setViewName("WEB-INF/views/stats.jsp");
+
+		return mv;
+	}
 	
 
 }

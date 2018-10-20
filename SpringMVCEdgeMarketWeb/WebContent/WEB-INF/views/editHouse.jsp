@@ -11,7 +11,8 @@
 </head>
 <body>
 		<form action="updateHouse.do" method="GET">
-		MLS #: <input type="text" name="mls" value= ${house.mls } /><BR>
+		ID #: <input type="text" name="id" value= ${house.id } /><BR>
+ 		MLS #: <input type="text" name="mls" value= ${house.mls } /><BR>
 		Address: <input type="text" name="address" value= ${house.address } /><BR>
 		City: <input type="text" name="city" value= ${house.city } /><BR>
 		Zip Code: <input type="text" name="zipCode" value= ${house.zipCode } /><BR>
