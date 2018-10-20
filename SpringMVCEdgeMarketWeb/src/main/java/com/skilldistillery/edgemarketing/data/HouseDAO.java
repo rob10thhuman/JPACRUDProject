@@ -2,14 +2,17 @@ package com.skilldistillery.edgemarketing.data;
 
 import java.util.List;
 
-import com.skilldistillery.edgemarketanalytics.entities.House;
+import com.skilldistillery.edgemarketing.entities.House;
 
 public interface HouseDAO {
-	House findById(int id); 
+	String findById(int id); 
 	List<House> findAll();
-	House add(House h); 
-	House update(House h); 
-	boolean delete (House h); 
-	boolean deleteById(int hid); 
+	House editHouse(String mls); 
+	boolean deleteById(int hid);
+	House getHouseById(int id);
+	House getHouseByMLS(String mls);
+	House addHouse(House house);
+	boolean deleteHouse(int id);
+	House updateHouse(House house); 
 
 }

@@ -1,6 +1,6 @@
-package com.skilldistillery.edgemarketanalytics.entities;
+package com.skilldistillery.edgemarketing.entities;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -36,9 +36,17 @@ class HouseTest {
 		em.close();
 	}
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
+//	@Test
+//	void test() {
+//		fail("Not yet implemented");
+//	}
+	
+	@Test 
+	void em_returns_house() {
+		House house =em.find(House.class, 3070);
+		System.out.println("***************************************");
+		System.out.println(house);
+		
+		assertEquals(3070, house.getId());
 	}
-
 }
