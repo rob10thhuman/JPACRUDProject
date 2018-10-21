@@ -94,17 +94,28 @@
 	</form>
 	
 	<form action="getAVGYTDStatsByAgent.do" method="GET">
-		Agent NRDS: <input type="text" name="NRDS" value="Enter NRDS number" />
+		Agent NRDS: <input type="text" name="NRDS" value="Enter NRDS # for YTD sums" />
 		<input type="submit" value="Search" />
 	</form>
 	
 	<form action="getBrokerageDeals.do" method="GET">
-		Brokerage: <input type="text" name="brokerage" value="Enter Brokerage" />
+		Brokerage YTD stats: <input type="text" name="brokerage" value="Enter Brokerage" />
 		<input type="submit" value="Search" />
 	</form>
 	
 	<form action="getHomesInDateRangeAsHyperlinks.do" method="GET">
-		Closed Date: <input type="text" name="closedDate" value="Enter min date" />
+		All Homes Sold in DB: <input type="text" name="closedDate" value="Enter start date" />
+		<input type="submit" value="Search" />
+	</form>
+		
+	<form action="getBrokerageListRankingYTD.do" method="GET">
+		Brokerage List Rankings: <input type="text" name="startDate" value="Enter start date" />
+		<input type="text" name="endDate" value="End date (blank for YTD)" />
+		<input type="submit" value="Search" />
+	</form>
+	
+	<form action="getZipYearToDate.do" method="GET">
+		Zip Code: <input type="text" name="zipCode" value="Enter zip code" />
 		<input type="submit" value="Search" />
 	</form>
 	

@@ -20,6 +20,8 @@ public interface HouseDAO {
 	List<Object[]> getAvgPriceYTDStats() throws SQLException;
 	List<Object[]> getAgentAvgPriceYTDStats(String NRDS);
 	List<Object[]> getBrokerageDeals(String brokerage);
-	List<Object[]> getHomesInDateRangeAsHyperlinks(String closedDate); 
+	List<Object[]> getHomesInDateRangeAsHyperlinks(String closedDate);
+	List<Object[]> getBrokerageListRankingYTD(String startDate, String endDate);
+	List<Object[]> getZipYearToDate(String zipCode); 
 
 }

@@ -58,6 +58,17 @@
 				</c:forEach>
 			</table>
 		</c:when>
+		
+		<c:when test="${not empty zipCodeStats }">
+
+			<table>
+				<c:forEach items="${zipCodeStats }" var="zipCodeStats">
+					<tr>
+						<td>${zipCodeStats } </td>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:when>
 
 
 		<c:otherwise>

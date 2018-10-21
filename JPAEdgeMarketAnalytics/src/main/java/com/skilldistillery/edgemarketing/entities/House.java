@@ -44,6 +44,8 @@ public class House {
 	private String listoffice;
 
 	private String selloffice;
+	
+	private int dom;
 
 	public int getId() {
 		return id;
@@ -149,6 +151,14 @@ public class House {
 		this.selloffice = selloffice;
 	}
 
+	public int getDom() {
+		return dom;
+	}
+
+	public void setDom(int dom) {
+		this.dom = dom;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -158,6 +168,7 @@ public class House {
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((closedDate == null) ? 0 : closedDate.hashCode());
 		result = prime * result + ((closedPrice == null) ? 0 : closedPrice.hashCode());
+		result = prime * result + dom;
 		result = prime * result + id;
 		result = prime * result + ((listAgent == null) ? 0 : listAgent.hashCode());
 		result = prime * result + ((listoffice == null) ? 0 : listoffice.hashCode());
@@ -202,6 +213,8 @@ public class House {
 			if (other.closedPrice != null)
 				return false;
 		} else if (!closedPrice.equals(other.closedPrice))
+			return false;
+		if (dom != other.dom)
 			return false;
 		if (id != other.id)
 			return false;
@@ -248,12 +261,12 @@ public class House {
 		return "House [id=" + id + ", mls=" + mls + ", address=" + address + ", city=" + city + ", zipCode=" + zipCode
 				+ ", zoning=" + zoning + ", listAgent=" + listAgent + ", buyersAgent=" + buyersAgent + ", closedDate="
 				+ closedDate + ", closedPrice=" + closedPrice + ", soldConcessions=" + soldConcessions + ", listoffice="
-				+ listoffice + ", selloffice=" + selloffice + "]";
+				+ listoffice + ", selloffice=" + selloffice + ", dom=" + dom + "]";
 	}
 
 	public House(int id, String mls, String address, String city, String zipCode, String zoning, String listAgent,
 			String buyersAgent, String closedDate, Double closedPrice, Double soldConcessions, String listoffice,
-			String selloffice) {
+			String selloffice, int dom) {
 		super();
 		this.id = id;
 		this.mls = mls;
@@ -268,9 +281,10 @@ public class House {
 		this.soldConcessions = soldConcessions;
 		this.listoffice = listoffice;
 		this.selloffice = selloffice;
-	}
+		this.dom = dom;
+	} 
 
-	public House() {
+	public House () {
 		
 	}
 	

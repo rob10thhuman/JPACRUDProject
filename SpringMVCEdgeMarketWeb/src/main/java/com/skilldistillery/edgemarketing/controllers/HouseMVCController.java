@@ -159,8 +159,8 @@ public class HouseMVCController {
 		for (Object[] objects : stats) {
 			String avgPrice = objects[0].toString();
 			String avgConcessions = objects[1].toString();
-			agentYtdStats.add("Average sales price YTD: $" + avgPrice + " and the " +  
-			"average seller's concessions are: $" + avgConcessions);
+			agentYtdStats.add("Sum sales price YTD: $" + avgPrice + " and the " +  
+			"sum seller's concessions are: $" + avgConcessions);
 		}
 		
 		mv.addObject("agentYtdStats", agentYtdStats);
@@ -179,8 +179,8 @@ public class HouseMVCController {
 		for (Object[] objects : stats) {
 			String avgPrice = objects[0].toString();
 			String avgConcessions = objects[1].toString();
-			brokerageYtdStats.add("Average sales price YTD: $" + avgPrice + " and the " +  
-			"average seller's concessions are: $" + avgConcessions);
+			brokerageYtdStats.add("Sum sales price YTD: $" + avgPrice + " and the " +  
+			"sum seller's concessions are: $" + avgConcessions);
 		}
 		
 		mv.addObject("brokerageYtdStats", brokerageYtdStats);
@@ -202,5 +202,50 @@ public class HouseMVCController {
 		return mv;
 
 	}
+	
+//	getBrokerageListRankingYTD
+	
+	@RequestMapping(path="getBrokerageListRankingYTD.do", params= {"startDate", "endDate"}, method = RequestMethod.GET)
+	public ModelAndView getBrokerageListRankingYTD(String startDate, String endDate) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		
+		List<String>brokerageStandings = new ArrayList<>(); 
+		List<Object[]> stats = housedao.getBrokerageListRankingYTD(startDate, endDate);
+		
+		for (Object[] objects : stats) {
+			String listoffice = objects[0].toString();
+			String countSales = objects[1].toString();
+			brokerageStandings.add(listoffice + "," + countSales);
+		}
+		
+		mv.addObject("brokerageStandings", brokerageStandings);
+		
+		mv.setViewName("WEB-INF/views/brokerageStandings.jsp");
 
+		return mv;
+
+	}
+	
+//	getZipYearToDate
+	
+	@RequestMapping(path="getZipYearToDate.do", params="zipCode", method = RequestMethod.GET)
+	public ModelAndView getZipYearToDate(String zipCode) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		
+		List<String>zipCodeStats = new ArrayList<>(); 
+		List<Object[]> zipStats = housedao.getZipYearToDate(zipCode);
+		
+		for (Object[] objects : zipStats) {
+			String avgSalesPrice = objects[0].toString();
+			String avgDom = objects[1].toString();
+			zipCodeStats.add(avgSalesPrice + "," + avgDom);
+		}
+		
+		mv.addObject("zipCodeStats", zipCodeStats);
+		
+		mv.setViewName("WEB-INF/views/stats.jsp");
+
+		return mv;
+
+	}
 }
