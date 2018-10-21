@@ -157,11 +157,10 @@ public class HouseMVCController {
 		List<Object[]> stats = housedao.getAgentAvgPriceYTDStats(NRDS);
 		
 		for (Object[] objects : stats) {
-			String avgPrice = objects[0].toString().substring(0,9);
-//			String avgConcessions = objects[1].toString().substring(0,7);
-			agentYtdStats.add("Average sales price YTD: $" + avgPrice); 
-//			agentYtdStats.add("Average sales price YTD: $" + avgPrice + " and the " + 
-//			"average seller's concessions are: $" + avgConcessions);
+			String avgPrice = objects[0].toString();
+			String avgConcessions = objects[1].toString();
+			agentYtdStats.add("Average sales price YTD: $" + avgPrice + " and the " +  
+			"average seller's concessions are: $" + avgConcessions);
 		}
 		
 		mv.addObject("agentYtdStats", agentYtdStats);
@@ -170,6 +169,38 @@ public class HouseMVCController {
 		return mv;
 
 	}
+	
+	@RequestMapping(path="getBrokerageDeals.do", params="brokerage", method = RequestMethod.GET)
+	public ModelAndView getBrokerageDeals(String brokerage) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		List<String>brokerageYtdStats = new ArrayList<>(); 
+		List<Object[]> stats = housedao.getBrokerageDeals(brokerage);
+		
+		for (Object[] objects : stats) {
+			String avgPrice = objects[0].toString();
+			String avgConcessions = objects[1].toString();
+			brokerageYtdStats.add("Average sales price YTD: $" + avgPrice + " and the " +  
+			"average seller's concessions are: $" + avgConcessions);
+		}
+		
+		mv.addObject("brokerageYtdStats", brokerageYtdStats);
+		mv.setViewName("WEB-INF/views/stats.jsp");
 
+		return mv;
+
+	}
+
+	@RequestMapping(path="getHomesInDateRangeAsHyperlinks.do", params="closedDate", method = RequestMethod.GET)
+	public ModelAndView getHomesInDateRangeAsHyperlinks(String closedDate) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		List<Object[]> housesInDateRange = housedao.getHomesInDateRangeAsHyperlinks(closedDate);
+		
+		
+		mv.addObject("housesInDateRange", housesInDateRange);
+		mv.setViewName("WEB-INF/views/housesInDateRange.jsp");
+
+		return mv;
+
+	}
 
 }

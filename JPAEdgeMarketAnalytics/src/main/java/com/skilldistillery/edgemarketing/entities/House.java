@@ -40,6 +40,10 @@ public class House {
 
 	@Column(name = "sold_concessions")
 	private Double soldConcessions;
+	
+	private String listoffice;
+
+	private String selloffice;
 
 	public int getId() {
 		return id;
@@ -129,6 +133,22 @@ public class House {
 		this.soldConcessions = soldConcessions;
 	}
 
+	public String getListoffice() {
+		return listoffice;
+	}
+
+	public void setListoffice(String listoffice) {
+		this.listoffice = listoffice;
+	}
+
+	public String getSelloffice() {
+		return selloffice;
+	}
+
+	public void setSelloffice(String selloffice) {
+		this.selloffice = selloffice;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -140,7 +160,9 @@ public class House {
 		result = prime * result + ((closedPrice == null) ? 0 : closedPrice.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((listAgent == null) ? 0 : listAgent.hashCode());
+		result = prime * result + ((listoffice == null) ? 0 : listoffice.hashCode());
 		result = prime * result + ((mls == null) ? 0 : mls.hashCode());
+		result = prime * result + ((selloffice == null) ? 0 : selloffice.hashCode());
 		result = prime * result + ((soldConcessions == null) ? 0 : soldConcessions.hashCode());
 		result = prime * result + ((zipCode == null) ? 0 : zipCode.hashCode());
 		result = prime * result + ((zoning == null) ? 0 : zoning.hashCode());
@@ -188,10 +210,20 @@ public class House {
 				return false;
 		} else if (!listAgent.equals(other.listAgent))
 			return false;
+		if (listoffice == null) {
+			if (other.listoffice != null)
+				return false;
+		} else if (!listoffice.equals(other.listoffice))
+			return false;
 		if (mls == null) {
 			if (other.mls != null)
 				return false;
 		} else if (!mls.equals(other.mls))
+			return false;
+		if (selloffice == null) {
+			if (other.selloffice != null)
+				return false;
+		} else if (!selloffice.equals(other.selloffice))
 			return false;
 		if (soldConcessions == null) {
 			if (other.soldConcessions != null)
@@ -211,8 +243,17 @@ public class House {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "House [id=" + id + ", mls=" + mls + ", address=" + address + ", city=" + city + ", zipCode=" + zipCode
+				+ ", zoning=" + zoning + ", listAgent=" + listAgent + ", buyersAgent=" + buyersAgent + ", closedDate="
+				+ closedDate + ", closedPrice=" + closedPrice + ", soldConcessions=" + soldConcessions + ", listoffice="
+				+ listoffice + ", selloffice=" + selloffice + "]";
+	}
+
 	public House(int id, String mls, String address, String city, String zipCode, String zoning, String listAgent,
-			String buyersAgent, String closedDate, Double closedPrice, Double soldConcessions) {
+			String buyersAgent, String closedDate, Double closedPrice, Double soldConcessions, String listoffice,
+			String selloffice) {
 		super();
 		this.id = id;
 		this.mls = mls;
@@ -225,17 +266,12 @@ public class House {
 		this.closedDate = closedDate;
 		this.closedPrice = closedPrice;
 		this.soldConcessions = soldConcessions;
+		this.listoffice = listoffice;
+		this.selloffice = selloffice;
 	}
 
 	public House() {
-
-	}
-
-	@Override
-	public String toString() {
-		return "House [id=" + id + ", mls=" + mls + ", address=" + address + ", city=" + city + ", zipCode=" + zipCode
-				+ ", zoning=" + zoning + ", listAgent=" + listAgent + ", buyersAgent=" + buyersAgent + ", closedDate="
-				+ closedDate + ", closedPrice=" + closedPrice + ", soldConcessions=" + soldConcessions + "]";
+		
 	}
 	
 	

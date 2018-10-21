@@ -91,9 +91,7 @@ public class HouseDAOImpl implements HouseDAO {
 
 	public Double getAvgPrice() {
 		Double stat = null;
-
 		String sql = "select avg(h.closedPrice)from House h";
-//		SELECT AVG(e.salary) FROM Professor e")
 		stat = em.createQuery(sql, Double.class).getSingleResult();
 
 		return stat;
@@ -121,14 +119,30 @@ public class HouseDAOImpl implements HouseDAO {
 		return stats;
 	}
 
-
+	@Override
 	public List<Object[]> getAgentAvgPriceYTDStats(String NRDS) {
 	
-		String sql = "select avg(h.closedPrice) from House h where h.closedDate>=\'2018-01-01\' and h.buyersAgent= :NRDS or h.listAgent= :NRDS";
+		String sql = "select avg(h.closedPrice) as closedAvg, avg(h.soldConcessions) as concessionsAvg from House h where h.closedDate>=\'2018-01-01\' and h.buyersAgent= :NRDS or h.listAgent= :NRDS";
 		
 		List<Object[]> stats = em.createQuery(sql, Object[].class).setParameter("NRDS", NRDS).getResultList();
         for (Object[] objects : stats) {
             System.out.println(objects[0]);
+            System.out.println(objects[1]);
+        }
+		
+		return stats;
+	}
+
+	@Override
+	public List<Object[]> getBrokerageDeals(String brokerage) {
+		
+		String sql = "select sum(h.closedPrice) as closedSum, sum(h.soldConcessions) as sumConcessions from House h where h.closedDate>=\'2018-01-01\' and h.listoffice = :brokerage or h.selloffice = :brokerage";
+//		String sql = "select avg(h.closedPrice) as closedAvg, avg(h.soldConcessions) as concessionsAvg from House h where h.closedDate>=\'2018-01-01\'";
+		
+		List<Object[]> stats = em.createQuery(sql, Object[].class).setParameter("brokerage", brokerage).getResultList();
+        for (Object[] objects : stats) {
+            System.out.println(objects[0]);
+            System.out.println(objects[1]);
         }
 		
 		return stats;
@@ -143,9 +157,13 @@ public class HouseDAOImpl implements HouseDAO {
 	}
 
 	@Override
-	public boolean deleteById(int hid) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<Object[]> getHomesInDateRangeAsHyperlinks(String closedDate) {
+		//returns list of homes sold after specified date
+		
+		String sql = "select h from House h where h.closedDate>= :closedDate";
+		List<Object[]> houses = em.createQuery(sql, Object[].class).setParameter("closedDate", closedDate).getResultList();
+
+		return houses;
 	}
 
 }

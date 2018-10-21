@@ -21,10 +21,10 @@
 		
 		
 		
-		<c:when test="${not empty ytdStats}">
+		<c:when test="${not empty ytdStats }">
 
 			<table>
-				<c:forEach items="${ytdStats }" var="stats">
+				<c:forEach items="${ytdStats }" var="ytdStats">
 					<tr>
 						<td>${ytdStats } </td>
 					</tr>
@@ -37,21 +37,26 @@
 		
 		
 
-		<c:when test="${not empty stats1}">
-			<ul>
-				<li>Average house stats: ${stats1 } </li>
-			</ul>
+		<c:when test="${not empty agentYtdStats }">
+
+			<table>
+				<c:forEach items="${agentYtdStats }" var="agentYtdStats">
+					<tr>
+						<td>${agentYtdStats } </td>
+					</tr>
+				</c:forEach>
+			</table>
 		</c:when>
 		
-		
-		
+		<c:when test="${not empty brokerageYtdStats }">
 
-		<c:when test="${not empty agentstat}">
-			<ul>
-				<li>Agent YTD sales: <fmt:formatNumber type="currency"
-						value="${agentstat }" /></li>
-
-			</ul>
+			<table>
+				<c:forEach items="${brokerageYtdStats }" var="brokerageYtdStats">
+					<tr>
+						<td>${brokerageYtdStats } </td>
+					</tr>
+				</c:forEach>
+			</table>
 		</c:when>
 
 
