@@ -19,6 +19,6 @@ public interface HouseDAO {
 	House updateHouse(int id, House updatedHouse);
 	Double getAvgPrice(); 
 	Double getAvgPriceYTD(); 
-	List<Double> getAvgPriceYTDStats() throws SQLException;
+	List<Object[]> getAvgPriceYTDStats() throws SQLException;
 
 }

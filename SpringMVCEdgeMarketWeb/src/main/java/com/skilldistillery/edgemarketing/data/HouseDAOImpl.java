@@ -107,24 +107,15 @@ public class HouseDAOImpl implements HouseDAO {
 		return stat;
 	}
 
-//	public List<Double> getAvgPriceYTDStats() throws SQLException {
-//		String sql = "select avg(h.closedPrice), avg(h.soldConcessions) from House h where h.closedDate>=\'2018-01-01\'";
-//		
-//		List<Double> avgSalesYTD = em.createQuery(sql, Double.class).getResultList();
-//		
-//		System.out.println("**************************");
-//		System.out.println(avgSalesYTD);
-//		
-//		return avgSalesYTD;
-//	}
+	public List<Object[]> getAvgPriceYTDStats() throws SQLException {
 
-	public List<Double> getAvgPriceYTDStats() throws SQLException {
-
-		List<Double>stats  = 
-				em.createQuery(
-				"select avg(h.closedPrice), avg(h.soldConcessions) from House h where h.closedDate>=\'2018-01-01\'")
-				.getResultList();
-
+		String qry = "select avg(h.closedPrice) as closedAvg, avg(h.soldConcessions) as concessionsAvg from House h where h.closedDate>=\'2018-01-01\'";
+		
+		List<Object[]>stats = 
+				em.createQuery(qry, Object[].class).getResultList();
+		
+		System.out.println("*************************************");
+		System.out.println(stats);
 		return stats;
 	}
 

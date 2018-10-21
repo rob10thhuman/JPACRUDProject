@@ -126,11 +126,10 @@ public class HouseMVCController {
 	@RequestMapping(path="getAVGYTDStats.do", method = RequestMethod.GET)
 	public ModelAndView getAvgYTDStats() throws SQLException {
 		ModelAndView mv = new ModelAndView();
-		List<Double> stats; 
+		List<Object[]> stats; 
 		stats = housedao.getAvgPriceYTDStats();
 		System.out.println("stat after retrieval: " + "\n" + stats);
-//		String stats1 = String.valueOf(stats.get(0));
-		mv.addObject("stats", stats);
+		mv.addObject("stats", stats); 
 		mv.setViewName("WEB-INF/views/stats.jsp");
 
 		return mv;
