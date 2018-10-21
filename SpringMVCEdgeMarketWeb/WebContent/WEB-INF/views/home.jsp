@@ -15,21 +15,31 @@
  -->
 <title>Edge Search</title>
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
-</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/siteStyles.css">
+
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet">
+ -->
+ 
+ </head>
 <body>
+	
+	<div class="container">
 	<h3>Search the database</h3>
 	
 	<form action="getId.do" method="GET">
-		House ID#: <input type="text" name="id" value="Enter Id number" />
+		House ID#: <input type="text" name="id" value="Enter Id #" />
 		<input type="submit" value="Search" />
 	</form>
 	
 	<form action="getMLS.do" method="GET">
-		House MLS#: <input type="text" name="mls" value="Enter MLS number" />
+		House MLS#: <input type="text" name="mls" value="Enter MLS #" />
 		<input type="submit" value="Search" />
 	</form>
 	
+	</div>
+	
+	<div class="container"> 
 	<h3>Add a house</h3>
 	
 	<form action="addHouse.do" method="GET">
@@ -44,47 +54,58 @@
 		<input type="submit" value="Add a house" />
 	</form>
 	
+	</div>
+	
+	<div class="container"> 
 	<h3>Delete a house</h3>
 	
 	<form action="deleteHouse.do" method="GET">
-		House ID#: <input type="text" name="id" value="Enter ID number" />
+		House ID#: <input type="text" name="id" value="Enter ID#" />
 		<input type="submit" value="Delete a house" />
 	</form>
+	
+	</div>
+	
+	<div class="container"> 
 	
 	<h3>Edit a house</h3>
 	
 	<form action="editHouse.do" method="GET">
-		House MLS#: <input type="text" name="mls" value="Enter MLS number" />
+		House MLS#: <input type="text" name="mls" value="Enter MLS#" />
 		<input type="submit" value="Search" />
 	</form>
 	
+	</div>
+	
+	<div class="container"> 
+	
 	<h3>Market Stats</h3>
+	
 	<form action="getAVG.do" method="GET">
-		<input type="submit" name="AVG" value="Average price of homes (all)" />
+		<input type="submit" name="AVG" value="Avg price of homes (all)" />
 	</form>
 	
 	<form action="getAVGYTD.do" method="GET">
-		<input type="submit" name="AVG" value="Average price of homes (YTD)" />
+		<input type="submit" name="AVG" value="Avg price of homes (YTD)" />
 	</form>
 	
 	<form action="getAVGYTDStats.do" method="GET">
-		<input type="submit" name="AVG" value="Average stats YTD (Avg price, sellers concession))" />
+		<input type="submit" name="AVG" value="Avg stats YTD (Avg price, sellers concession)" />
 	</form>
-	
-	<%-- <form action="getAVGYTDStatsByAgent.do" method="GET">
-		<input type="submit" name="AVG" value="YTD total sales $ by agent" />
-	</form> --%>
 	
 	<form action="getAVGYTDStatsByAgent.do" method="GET">
 		Agent NRDS: <input type="text" name="NRDS" value="Enter NRDS number" />
 		<input type="submit" value="Search" />
 	</form>
 	
+	</div>
+	
 
 <form name="mainform" method="post" ></form>
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

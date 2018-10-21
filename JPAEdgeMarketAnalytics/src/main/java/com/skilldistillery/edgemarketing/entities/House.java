@@ -8,45 +8,46 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="house")
+@Table(name = "house")
 public class House {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name="mls")
-	private String mls; 
-	
+	@Column(name = "mls")
+	private String mls;
+
 	private String address;
-	private String city; 
-	
-	@Column(name="zip_code")
+
+	private String city;
+
+	@Column(name = "zip_code")
 	private String zipCode;
-	
-	private String zoning; 
-	
-	@Column(name="listagent")
+
+	private String zoning;
+
+	@Column(name = "listagent")
 	private String listAgent;
-	
-	@Column(name="buyersagent")
+
+	@Column(name = "buyersagent")
 	private String buyersAgent;
-	
-	@Column(name="closed_date")
-	private String closedDate; 
-	
-	@Column(name="close_price")
+
+	@Column(name = "closed_date")
+	private String closedDate;
+
+	@Column(name = "close_price")
 	private Double closedPrice;
-	
-	@Column(name="sold_concessions")
+
+	@Column(name = "sold_concessions")
 	private Double soldConcessions;
 
 	public int getId() {
 		return id;
 	}
 
-//	public void setId(int id) {
-//		this.id = id;
-//	}
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getMls() {
 		return mls;
@@ -120,6 +121,14 @@ public class House {
 		this.closedPrice = closedPrice;
 	}
 
+	public Double getSoldConcessions() {
+		return soldConcessions;
+	}
+
+	public void setSoldConcessions(Double soldConcessions) {
+		this.soldConcessions = soldConcessions;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -132,6 +141,7 @@ public class House {
 		result = prime * result + id;
 		result = prime * result + ((listAgent == null) ? 0 : listAgent.hashCode());
 		result = prime * result + ((mls == null) ? 0 : mls.hashCode());
+		result = prime * result + ((soldConcessions == null) ? 0 : soldConcessions.hashCode());
 		result = prime * result + ((zipCode == null) ? 0 : zipCode.hashCode());
 		result = prime * result + ((zoning == null) ? 0 : zoning.hashCode());
 		return result;
@@ -183,6 +193,11 @@ public class House {
 				return false;
 		} else if (!mls.equals(other.mls))
 			return false;
+		if (soldConcessions == null) {
+			if (other.soldConcessions != null)
+				return false;
+		} else if (!soldConcessions.equals(other.soldConcessions))
+			return false;
 		if (zipCode == null) {
 			if (other.zipCode != null)
 				return false;
@@ -197,7 +212,7 @@ public class House {
 	}
 
 	public House(int id, String mls, String address, String city, String zipCode, String zoning, String listAgent,
-			String buyersAgent, String closedDate, Double closedPrice) {
+			String buyersAgent, String closedDate, Double closedPrice, Double soldConcessions) {
 		super();
 		this.id = id;
 		this.mls = mls;
@@ -209,11 +224,20 @@ public class House {
 		this.buyersAgent = buyersAgent;
 		this.closedDate = closedDate;
 		this.closedPrice = closedPrice;
+		this.soldConcessions = soldConcessions;
+	}
+
+	public House() {
+
+	}
+
+	@Override
+	public String toString() {
+		return "House [id=" + id + ", mls=" + mls + ", address=" + address + ", city=" + city + ", zipCode=" + zipCode
+				+ ", zoning=" + zoning + ", listAgent=" + listAgent + ", buyersAgent=" + buyersAgent + ", closedDate="
+				+ closedDate + ", closedPrice=" + closedPrice + ", soldConcessions=" + soldConcessions + "]";
 	}
 	
 	
-	public House () {
-		
-	}
-	
+
 }

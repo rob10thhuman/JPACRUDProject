@@ -111,14 +111,30 @@ public class HouseDAOImpl implements HouseDAO {
 
 		String qry = "select avg(h.closedPrice) as closedAvg, avg(h.soldConcessions) as concessionsAvg from House h where h.closedDate>=\'2018-01-01\'";
 		
-		List<Object[]>stats = 
-				em.createQuery(qry, Object[].class).getResultList();
+		List<Object[]> stats = em.createQuery(qry, Object[].class).getResultList();
+        for (Object[] objects : stats) {
+            System.out.println(objects[0] + " - " + objects[1]);
+        }
 		
 		System.out.println("*************************************");
 		System.out.println(stats);
 		return stats;
 	}
 
+
+	public List<Object[]> getAgentAvgPriceYTDStats(String NRDS) {
+	
+		String sql = "select avg(h.closedPrice) from House h where h.closedDate>=\'2018-01-01\' and h.buyersAgent= :NRDS or h.listAgent= :NRDS";
+		
+		List<Object[]> stats = em.createQuery(sql, Object[].class).setParameter("NRDS", NRDS).getResultList();
+        for (Object[] objects : stats) {
+            System.out.println(objects[0]);
+        }
+		
+		return stats;
+	}
+	
+	
 	@Override
 	public boolean deleteHouse(int id) {
 		House house = em.find(House.class, id);

@@ -1,6 +1,9 @@
 package com.skilldistillery.edgemarketing.controllers;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,14 +129,47 @@ public class HouseMVCController {
 	@RequestMapping(path="getAVGYTDStats.do", method = RequestMethod.GET)
 	public ModelAndView getAvgYTDStats() throws SQLException {
 		ModelAndView mv = new ModelAndView();
-		List<Object[]> stats; 
-		stats = housedao.getAvgPriceYTDStats();
+		List<String>ytdStats = new ArrayList<>(); 
+		List<Object[]> stats = housedao.getAvgPriceYTDStats();
+		
 		System.out.println("stat after retrieval: " + "\n" + stats);
 		mv.addObject("stats", stats); 
+		
+		for (Object[] objects : stats) {
+			String avgPrice = objects[0].toString().substring(0,9);
+			String avgConcessions = objects[1].toString().substring(0,7);
+			ytdStats.add("Average sales price YTD: $" + avgPrice + " and the " + 
+			"average seller's concessions are: $" + avgConcessions);
+		}
+		
+		mv.addObject("ytdStats", ytdStats);
+		
 		mv.setViewName("WEB-INF/views/stats.jsp");
 
 		return mv;
 
 	}
+	
+	@RequestMapping(path="getAVGYTDStatsByAgent.do", params="NRDS", method = RequestMethod.GET)
+	public ModelAndView getAvgYTDStatsByAgent(String NRDS) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		List<String>agentYtdStats = new ArrayList<>(); 
+		List<Object[]> stats = housedao.getAgentAvgPriceYTDStats(NRDS);
+		
+		for (Object[] objects : stats) {
+			String avgPrice = objects[0].toString().substring(0,9);
+//			String avgConcessions = objects[1].toString().substring(0,7);
+			agentYtdStats.add("Average sales price YTD: $" + avgPrice); 
+//			agentYtdStats.add("Average sales price YTD: $" + avgPrice + " and the " + 
+//			"average seller's concessions are: $" + avgConcessions);
+		}
+		
+		mv.addObject("agentYtdStats", agentYtdStats);
+		mv.setViewName("WEB-INF/views/stats.jsp");
+
+		return mv;
+
+	}
+
 
 }

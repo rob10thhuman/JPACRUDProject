@@ -21,15 +21,15 @@
 		
 		
 		
-		<c:when test="${not empty stats}">
-			<ul>
-				<li>Average house stats:</li>
-			</ul>
+		<c:when test="${not empty ytdStats}">
 
 			<table>
-				<c:forEach items="${stats }" var="stats">
+				<c:forEach items="${ytdStats }" var="stats">
 					<tr>
-						<td>${stats } </td>
+						<td>${ytdStats } </td>
+					</tr>
+					<tr>
+					<td>** Kudos to @Zach for figuring this flow out! ** </td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -42,6 +42,9 @@
 				<li>Average house stats: ${stats1 } </li>
 			</ul>
 		</c:when>
+		
+		
+		
 
 		<c:when test="${not empty agentstat}">
 			<ul>
