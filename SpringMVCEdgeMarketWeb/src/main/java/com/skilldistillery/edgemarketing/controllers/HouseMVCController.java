@@ -265,7 +265,7 @@ public class HouseMVCController {
 			String avgListPrice = objects[3].toString();
 			String percentCpLp = objects[4].toString();
 			String dom = objects[5].toString();
-			areaStandings.add("A:" + area.substring(0,3) + ", # Sales:" + countSales + ", A/P:$" + avgPrice.substring(0,6) 
+			areaStandings.add("A:" + area + ", # Sales:" + countSales + ", A/P:$" + avgPrice.substring(0,6) 
 			+ ", A/L:$" + avgListPrice.substring(0,6) + ", " + percentCpLp.substring(0,3) + "% LPR, " +  "A/DOM: " + dom.substring(0,2));
 		}
 		

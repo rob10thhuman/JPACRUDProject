@@ -35,11 +35,6 @@ class HouseTest {
 	void tearDown() throws Exception {
 		em.close();
 	}
-
-//	@Test
-//	void test() {
-//		fail("Not yet implemented");
-//	}
 	
 	@Test 
 	void em_returns_house() {
