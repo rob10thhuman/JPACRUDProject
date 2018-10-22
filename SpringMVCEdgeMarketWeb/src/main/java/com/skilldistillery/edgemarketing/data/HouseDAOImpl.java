@@ -85,6 +85,12 @@ public class HouseDAOImpl implements HouseDAO {
 		House house = em.find(House.class, id);
 
 		house.setAddress(updatedHouse.getAddress());
+		house.setCity(updatedHouse.getCity());
+		house.setZipCode(updatedHouse.getZipCode());
+		house.setListAgent(updatedHouse.getListAgent());
+		house.setBuyersAgent(updatedHouse.getBuyersAgent());
+		house.setClosedDate(updatedHouse.getClosedDate());
+		house.setClosedPrice(updatedHouse.getClosedPrice());
 
 		return house;
 	}

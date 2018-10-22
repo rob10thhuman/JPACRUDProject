@@ -12,9 +12,9 @@
       <property name="javax.persistence.jdbc.url"
         value="jdbc:mysql://localhost:3306/houses?useSSL=false" />
       <property name="javax.persistence.jdbc.user"
-        value="student"/>
+        value="root"/>
       <property name="javax.persistence.jdbc.password"
-        value="student" />
+        value="root" />
       <property name="javax.persistence.jdbc.driver"
         value="com.mysql.jdbc.Driver" />
 

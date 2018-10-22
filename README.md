@@ -19,7 +19,8 @@ KNOWN ISSUES:
 8. cp/lp ratio substring out of bounds at 4 but shouldn't be happening
 9. (FIXED) Closed price change not working
 10. How do I pull the fields into JSP vs passing the object alone back and iterating across it?
-11. Brokerage YTD sales query not quite accurate. 
+11. Brokerage YTD sales query not quite accurate.
+12. (FIXED - didn't have the setters for other fields in place) in update, only the address is updating. 
 
 FUTURE DEVELOPMENT:
 1. "Beautify" the reports.
