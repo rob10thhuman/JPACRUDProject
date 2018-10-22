@@ -36,16 +36,30 @@
 	
 	<div class="container">
 
-		<h3>Brokerage Listing Standings</h3>
 
 		<c:choose>
 
 			<c:when test="${not empty brokerageStandings }">
 
+			<h3>Brokerage Listing Standings</h3>
+
 				<table>
 				<c:forEach items="${brokerageStandings }" var="brokerageStandings">
 					<tr>
 						<td>${brokerageStandings } </td>
+					</tr>
+				</c:forEach>
+			</table>
+			</c:when>
+			
+			<c:when test="${not empty areaStandings }">
+
+			<h3>Area Standings</h3>
+
+				<table>
+				<c:forEach items="${areaStandings }" var="areaStandings">
+					<tr>
+						<td>${areaStandings } </td>
 					</tr>
 				</c:forEach>
 			</table>

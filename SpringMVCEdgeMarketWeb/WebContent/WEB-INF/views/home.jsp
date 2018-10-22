@@ -115,7 +115,13 @@
 	</form>
 	
 	<form action="getZipYearToDate.do" method="GET">
-		Zip Code: <input type="text" name="zipCode" value="Enter zip code" />
+		Zip Code: <input type="text" name="zipCode" value="Enter zip for YTD stats" />
+		<input type="submit" value="Search" />
+	</form>
+	
+	<form action="getHotAreasReport.do" method="GET">
+		Hot Sales Area Report: <input type="text" name="startDate" value="Enter start date" />
+		<input type="text" name="endDate" value="End date (blank for YTD)" />
 		<input type="submit" value="Search" />
 	</form>
 	

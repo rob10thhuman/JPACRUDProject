@@ -45,7 +45,12 @@ public class House {
 
 	private String selloffice;
 	
+	private String area; 
+	
 	private int dom;
+	
+	@Column(name = "list_price")
+	private String listPrice;
 
 	public int getId() {
 		return id;
@@ -151,6 +156,14 @@ public class House {
 		this.selloffice = selloffice;
 	}
 
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
 	public int getDom() {
 		return dom;
 	}
@@ -159,11 +172,20 @@ public class House {
 		this.dom = dom;
 	}
 
+	public String getListPrice() {
+		return listPrice;
+	}
+
+	public void setListPrice(String listPrice) {
+		this.listPrice = listPrice;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((area == null) ? 0 : area.hashCode());
 		result = prime * result + ((buyersAgent == null) ? 0 : buyersAgent.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((closedDate == null) ? 0 : closedDate.hashCode());
@@ -171,6 +193,7 @@ public class House {
 		result = prime * result + dom;
 		result = prime * result + id;
 		result = prime * result + ((listAgent == null) ? 0 : listAgent.hashCode());
+		result = prime * result + ((listPrice == null) ? 0 : listPrice.hashCode());
 		result = prime * result + ((listoffice == null) ? 0 : listoffice.hashCode());
 		result = prime * result + ((mls == null) ? 0 : mls.hashCode());
 		result = prime * result + ((selloffice == null) ? 0 : selloffice.hashCode());
@@ -193,6 +216,11 @@ public class House {
 			if (other.address != null)
 				return false;
 		} else if (!address.equals(other.address))
+			return false;
+		if (area == null) {
+			if (other.area != null)
+				return false;
+		} else if (!area.equals(other.area))
 			return false;
 		if (buyersAgent == null) {
 			if (other.buyersAgent != null)
@@ -222,6 +250,11 @@ public class House {
 			if (other.listAgent != null)
 				return false;
 		} else if (!listAgent.equals(other.listAgent))
+			return false;
+		if (listPrice == null) {
+			if (other.listPrice != null)
+				return false;
+		} else if (!listPrice.equals(other.listPrice))
 			return false;
 		if (listoffice == null) {
 			if (other.listoffice != null)
@@ -261,12 +294,13 @@ public class House {
 		return "House [id=" + id + ", mls=" + mls + ", address=" + address + ", city=" + city + ", zipCode=" + zipCode
 				+ ", zoning=" + zoning + ", listAgent=" + listAgent + ", buyersAgent=" + buyersAgent + ", closedDate="
 				+ closedDate + ", closedPrice=" + closedPrice + ", soldConcessions=" + soldConcessions + ", listoffice="
-				+ listoffice + ", selloffice=" + selloffice + ", dom=" + dom + "]";
+				+ listoffice + ", selloffice=" + selloffice + ", area=" + area + ", dom=" + dom + ", listPrice="
+				+ listPrice + "]";
 	}
 
 	public House(int id, String mls, String address, String city, String zipCode, String zoning, String listAgent,
 			String buyersAgent, String closedDate, Double closedPrice, Double soldConcessions, String listoffice,
-			String selloffice, int dom) {
+			String selloffice, String area, int dom, String listPrice) {
 		super();
 		this.id = id;
 		this.mls = mls;
@@ -281,8 +315,10 @@ public class House {
 		this.soldConcessions = soldConcessions;
 		this.listoffice = listoffice;
 		this.selloffice = selloffice;
+		this.area = area;
 		this.dom = dom;
-	} 
+		this.listPrice = listPrice;
+	}
 
 	public House () {
 		

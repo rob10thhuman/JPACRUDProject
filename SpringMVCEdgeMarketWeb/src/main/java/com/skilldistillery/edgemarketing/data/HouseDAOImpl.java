@@ -170,10 +170,6 @@ public class HouseDAOImpl implements HouseDAO {
 	public List<Object[]> getBrokerageListRankingYTD(String startDate, String endDate) {
 		// returns list of homes sold and sum sales by brokerage
 
-//		select listoffice, count(*) as SALES from house group by listoffice order by SALES;
-
-//		String sql = "select sum(h.closedPrice) as closedSum, sum(h.soldConcessions) as sumConcessions from House h where h.closedDate>=\'2018-01-01\' and h.listoffice = :brokerage or h.selloffice = :brokerage";
-
 		String sql = "select h.listoffice, count(h) as sales from House h where closedDate>= :startDate and closedDate<= :endDate group by h.listoffice order by sales desc";
 		List<Object[]> stats = em.createQuery(sql, Object[].class).setParameter("startDate", startDate)
 				.setParameter("endDate", endDate).getResultList();
@@ -188,7 +184,7 @@ public class HouseDAOImpl implements HouseDAO {
 	@Override
 	public List<Object[]> getZipYearToDate(String zipCode) {
 
-		String qry = "select avg(h.closedPrice) as avgClosed, avg(h.dom) as avgDom from House h where h.zipCode= :zipCode ";
+		String qry = "select avg(h.closedPrice) as avgClosed, avg(h.dom) as avgDom from House h where h.zipCode= :zipCode and closedDate>=\'2018-01-01\'";
 
 		List<Object[]> stats = em.createQuery(qry, Object[].class).setParameter("zipCode", zipCode).getResultList();
 		for (Object[] objects : stats) {
@@ -199,5 +195,23 @@ public class HouseDAOImpl implements HouseDAO {
 		System.out.println(stats);
 		return stats;
 	}
+	
+	@Override
+	public List<Object[]> getHotAreasReport(String startDate, String endDate) {
+		// returns list of homes sold and sum sales by brokerage
+
+		String sql = "select h.area, count(h) as areas, avg(closedPrice), avg(listPrice), avg(closedPrice)/avg(listPrice)*100, avg(dom) from House h where closedDate>= :startDate and closedDate<= :endDate group by h.area order by areas desc";
+		List<Object[]> stats = em.createQuery(sql, Object[].class).setParameter("startDate", startDate)
+				.setParameter("endDate", endDate).getResultList();
+//		for (Object[] objects : stats) {
+//            System.out.println(objects[0]);
+//            System.out.println(objects[1]);
+//        }
+
+		return stats;
+	}
+	
+//	String sql = "select h.area, count(h) as sales from House h where closedDate>= :startDate and closedDate<= :endDate group by h.listoffice order by sales desc";
+
 
 }

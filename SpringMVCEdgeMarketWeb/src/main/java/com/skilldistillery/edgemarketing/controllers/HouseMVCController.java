@@ -95,7 +95,7 @@ public class HouseMVCController {
 	public ModelAndView updateHouse(int id, House updatedHouse) throws SQLException {
 		ModelAndView mv = new ModelAndView();
 		updatedHouse = housedao.updateHouse(id, updatedHouse);
-		mv.addObject("house", updatedHouse);
+		mv.addObject("updatedHouse", updatedHouse);
 		mv.setViewName("WEB-INF/views/result.jsp");
 		
 		return mv;
@@ -238,12 +238,40 @@ public class HouseMVCController {
 		for (Object[] objects : zipStats) {
 			String avgSalesPrice = objects[0].toString();
 			String avgDom = objects[1].toString();
-			zipCodeStats.add(avgSalesPrice + "," + avgDom);
+			zipCodeStats.add("Average sales price for zip is $: "+ avgSalesPrice + " and average days on market is: " + avgDom);
 		}
 		
 		mv.addObject("zipCodeStats", zipCodeStats);
 		
 		mv.setViewName("WEB-INF/views/stats.jsp");
+
+		return mv;
+
+	}
+	
+//	getHotAreasReport
+	
+	@RequestMapping(path="getHotAreasReport.do", params= {"startDate", "endDate"}, method = RequestMethod.GET)
+	public ModelAndView getHotAreasReport(String startDate, String endDate) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		
+		List<String>areaStandings = new ArrayList<>(); 
+		List<Object[]> stats = housedao.getHotAreasReport(startDate, endDate);
+		
+		for (Object[] objects : stats) {
+			String area = objects[0].toString();
+			String countSales = objects[1].toString();
+			String avgPrice = objects[2].toString();
+			String avgListPrice = objects[3].toString();
+			String percentCpLp = objects[4].toString();
+			String dom = objects[5].toString();
+			areaStandings.add("A:" + area.substring(0,3) + ", # Sales:" + countSales + ", A/P:$" + avgPrice.substring(0,6) 
+			+ ", A/L:$" + avgListPrice.substring(0,6) + ", " + percentCpLp.substring(0,3) + "% LPR, " +  "A/DOM: " + dom.substring(0,2));
+		}
+		
+		mv.addObject("areaStandings", areaStandings);
+		
+		mv.setViewName("WEB-INF/views/brokerageStandings.jsp");
 
 		return mv;
 
