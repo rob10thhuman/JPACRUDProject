@@ -11,49 +11,52 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- -->
-<title>Edge Search</title>
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="css/siteStyles.css">
+<!-- Custom fonts for this template -->
 
-<!-- <link href="css/bootstrap.min.css" rel="stylesheet">
- -->
+<link
+	href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i"
+	rel="stylesheet">
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/resume.min.css" rel="stylesheet">
+<link rel="icon" href="https://www.freeiconspng.com/uploads/black-yellow-house-clip-art-picture-2.png">
+
+<title>Houses in Date Range</title>
 
 </head>
-<body>
-	<div class="container">
-	
-	<form action="home.do">
-		<input type="submit" value="Home">
-	</form>
-	
-	</div>
+<body id="page-top">
+	<%@ include file="navbar.jsp"%>
+
+<div>Houses In Date Range</div>
+	<div>housesInDateRange.jsp</div>
 	
 	<div class="container">
 
-		<h3>Houses in Date Range</h3>
+		<h4>Houses in Date Range</h4>
 
 		<c:choose>
 
 			<c:when test="${not empty housesInDateRange }">
 
 				<table>
-					<c:forEach items="${housesInDateRange }" var="housesInDateRange">
 
 						<tr>
-							<th>MLS</th>
-							<th>Zip Code</th>
-							<th>Closed Date</th>
-							<th>Closed Price</th>
+							<th>MLS </th>
+							<th>Zip Code </th>
+							<th>Closed Date </th>
+							<th>Closed Price </th>
 						</tr>
+					<c:forEach items="${housesInDateRange }" var="housesInDateRange">
 						<tr>
 							<td>${housesInDateRange.mls }</td>
-							<td>${housesInDateRange.zipCode }</td>
+							<td><A HREF="getZipYearToDate.do?zipCode=${housesInDateRange.zipCode }">${housesInDateRange.zipCode }</A></td>
 							<td>${housesInDateRange.closedDate }</td>
 							<td>${housesInDateRange.closedPrice }</td>
 						</tr>
@@ -69,10 +72,6 @@
 		</c:choose>
 
 	</div>
-
-
-	<form name="mainform" method="post"></form>
-
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

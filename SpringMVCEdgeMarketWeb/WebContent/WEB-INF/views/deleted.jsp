@@ -9,6 +9,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<link rel="icon" href="https://www.freeiconspng.com/uploads/black-yellow-house-clip-art-picture-2.png">
+
 <title>Successful Delete!</title>
 </head>
 <body>

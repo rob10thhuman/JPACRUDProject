@@ -11,42 +11,55 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- -->
-<title>Brokerage Listing Standings</title>
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="css/siteStyles.css">
+<!-- Custom fonts for this template -->
 
-<!-- <link href="css/bootstrap.min.css" rel="stylesheet">
- -->
+<link
+	href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i"
+	rel="stylesheet">
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/resume.min.css" rel="stylesheet">
+
+<title>Brokerage Standings</title>
 
 </head>
-<body>
-	<div class="container">
-	
-	<form action="home.do">
-		<input type="submit" value="Home">
-	</form>
-	
-	</div>
-	
-	<div class="container">
+<body id="page-top">
+	<%@ include file="navbar.jsp"%>
 
+<div>Brokerage View</div>
+	<div>brokerageStandings.jsp</div>
+<div class="container">
 
 		<c:choose>
 
 			<c:when test="${not empty brokerageStandings }">
 
-			<h3>Brokerage Listing Standings</h3>
+			<h4>Brokerage Listing Standings</h4>
 
 				<table>
-				<c:forEach items="${brokerageStandings }" var="brokerageStandings">
+				<c:forEach items="${brokerageStandings }" var="brokerageStandings" varStatus="status">
 					<tr>
-						<td>${brokerageStandings } </td>
+						<td># ${status.count } ${brokerageStandings } </td>
+					</tr>
+				</c:forEach>
+			</table>
+			</c:when>
+			
+			<c:when test="${not empty brokerageSellStandings }">
+
+			<h4>Brokerage Selling Office Standings</h4>
+
+				<table>
+				<c:forEach items="${brokerageSellStandings }" var="brokerageSellStandings" varStatus="status">
+					<tr>
+						<td># ${status.count } ${brokerageSellStandings } </td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -57,9 +70,22 @@
 			<h3>Area Standings</h3>
 
 				<table>
-				<c:forEach items="${areaStandings }" var="areaStandings">
+				<c:forEach items="${areaStandings }" var="areaStandings" varStatus="status">
 					<tr>
-						<td>${areaStandings } </td>
+						<td># ${status.count }  ${areaStandings } </td>
+					</tr>
+				</c:forEach>
+			</table>
+			</c:when>
+			
+			<c:when test="${not empty subareaStandings }">
+
+			<h3>Sub Area Standings</h3>
+
+				<table>
+				<c:forEach items="${subareaStandings }" var="subareaStandings" varStatus="status">
+					<tr>
+						<td># ${status.count }${subareaStandings } </td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -75,6 +101,7 @@
 	</div>
 
 
+	
 	<form name="mainform" method="post"></form>
 
 

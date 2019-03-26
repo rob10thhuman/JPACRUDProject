@@ -7,14 +7,20 @@
   <persistence-unit name="EdgeMarketAnalytics">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
+	<class>com.skilldistillery.edgemarketanalytics.entities.Agent</class>
+	<class>com.skilldistillery.edgemarketanalytics.entities.Client</class>
+	<class>com.skilldistillery.edgemarketanalytics.entities.Exchange</class>
 	<class>com.skilldistillery.edgemarketanalytics.entities.House</class>
+	<class>com.skilldistillery.edgemarketanalytics.entities.Lender</class>
+	<class>com.skilldistillery.edgemarketanalytics.entities.Status</class>
+	<class>com.skilldistillery.edgemarketanalytics.entities.Title</class>
     <properties>
       <property name="javax.persistence.jdbc.url"
         value="jdbc:mysql://localhost:3306/houses?useSSL=false" />
       <property name="javax.persistence.jdbc.user"
-        value="root"/>
+        value="rob2018houses"/>
       <property name="javax.persistence.jdbc.password"
-        value="root" />
+        value="Sam0403101" />
       <property name="javax.persistence.jdbc.driver"
         value="com.mysql.jdbc.Driver" />
 
