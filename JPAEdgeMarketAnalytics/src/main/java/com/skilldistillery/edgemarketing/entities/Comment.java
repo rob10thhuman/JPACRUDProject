@@ -57,16 +57,16 @@ public class Comment {
 	public String toString() {
 		return "Comment [id=" + id + ", comment=" + comment + ", client=" + client + "]";
 	}
-
+	
+	public Comment() {
+		
+	}
+	
 	public Comment(int id, String comment, Client client) {
 		super();
 		this.id = id;
 		this.comment = comment;
 		this.client = client;
-	}
-	
-	public Comment() {
-		
 	}
 	
 }
