@@ -42,6 +42,6 @@ class HouseTest {
 		System.out.println("***************************************");
 		System.out.println(house);
 		
-		assertEquals(3070, house.getId());
+//		assertEquals(3070, house.getId());
 	}
 }

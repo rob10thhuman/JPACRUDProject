@@ -45,6 +45,15 @@ public class House {
 	@Column(name = "sold_concessions")
 	private Double soldConcessions;
 	
+	@Column(name = "total_sf")
+	private Double totalSf; 
+	
+	@Column(name = "finished_sf")
+	private Double finishedSf; 
+	
+	@Column(name = "sp_sf")
+	private Double salePriceSf;
+	
 	private String listoffice;
 
 	private String selloffice;
@@ -73,30 +82,14 @@ public class House {
 	
 	
 
-	
-
-	public Integer getBedrooms() {
-		return bedrooms;
-	}
-
-
-
-	public void setBedrooms(Integer bedrooms) {
-		this.bedrooms = bedrooms;
-	}
-
-
-
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
 
-
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 
 	public String getMls() {
@@ -104,11 +97,9 @@ public class House {
 	}
 
 
-
 	public void setMls(String mls) {
 		this.mls = mls;
 	}
-
 
 
 	public String getAddress() {
@@ -116,11 +107,9 @@ public class House {
 	}
 
 
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 
 
 	public String getCity() {
@@ -128,11 +117,9 @@ public class House {
 	}
 
 
-
 	public void setCity(String city) {
 		this.city = city;
 	}
-
 
 
 	public String getZipCode() {
@@ -140,11 +127,9 @@ public class House {
 	}
 
 
-
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
-
 
 
 	public String getZoning() {
@@ -152,11 +137,9 @@ public class House {
 	}
 
 
-
 	public void setZoning(String zoning) {
 		this.zoning = zoning;
 	}
-
 
 
 	public String getListAgent() {
@@ -164,11 +147,9 @@ public class House {
 	}
 
 
-
 	public void setListAgent(String listAgent) {
 		this.listAgent = listAgent;
 	}
-
 
 
 	public String getBuyersAgent() {
@@ -176,11 +157,9 @@ public class House {
 	}
 
 
-
 	public void setBuyersAgent(String buyersAgent) {
 		this.buyersAgent = buyersAgent;
 	}
-
 
 
 	public String getClosedDate() {
@@ -188,11 +167,9 @@ public class House {
 	}
 
 
-
 	public void setClosedDate(String closedDate) {
 		this.closedDate = closedDate;
 	}
-
 
 
 	public Double getClosedPrice() {
@@ -200,11 +177,9 @@ public class House {
 	}
 
 
-
 	public void setClosedPrice(Double closedPrice) {
 		this.closedPrice = closedPrice;
 	}
-
 
 
 	public Double getSoldConcessions() {
@@ -212,11 +187,39 @@ public class House {
 	}
 
 
-
 	public void setSoldConcessions(Double soldConcessions) {
 		this.soldConcessions = soldConcessions;
 	}
 
+
+	public Double getTotalSf() {
+		return totalSf;
+	}
+
+
+	public void setTotalSf(Double totalSf) {
+		this.totalSf = totalSf;
+	}
+
+
+	public Double getFinishedSf() {
+		return finishedSf;
+	}
+
+
+	public void setFinishedSf(Double finishedSf) {
+		this.finishedSf = finishedSf;
+	}
+
+
+	public Double getSalePriceSf() {
+		return salePriceSf;
+	}
+
+
+	public void setSalePriceSf(Double salePriceSf) {
+		this.salePriceSf = salePriceSf;
+	}
 
 
 	public String getListoffice() {
@@ -224,11 +227,9 @@ public class House {
 	}
 
 
-
 	public void setListoffice(String listoffice) {
 		this.listoffice = listoffice;
 	}
-
 
 
 	public String getSelloffice() {
@@ -236,11 +237,9 @@ public class House {
 	}
 
 
-
 	public void setSelloffice(String selloffice) {
 		this.selloffice = selloffice;
 	}
-
 
 
 	public String getArea() {
@@ -248,11 +247,9 @@ public class House {
 	}
 
 
-
 	public void setArea(String area) {
 		this.area = area;
 	}
-
 
 
 	public String getSubArea() {
@@ -260,11 +257,9 @@ public class House {
 	}
 
 
-
 	public void setSubArea(String subArea) {
 		this.subArea = subArea;
 	}
-
 
 
 	public String getSchoolDistrict() {
@@ -272,11 +267,9 @@ public class House {
 	}
 
 
-
 	public void setSchoolDistrict(String schoolDistrict) {
 		this.schoolDistrict = schoolDistrict;
 	}
-
 
 
 	public String getTermsSale() {
@@ -284,11 +277,9 @@ public class House {
 	}
 
 
-
 	public void setTermsSale(String termsSale) {
 		this.termsSale = termsSale;
 	}
-
 
 
 	public int getDom() {
@@ -296,11 +287,9 @@ public class House {
 	}
 
 
-
 	public void setDom(int dom) {
 		this.dom = dom;
 	}
-
 
 
 	public String getListPrice() {
@@ -308,11 +297,9 @@ public class House {
 	}
 
 
-
 	public void setListPrice(String listPrice) {
 		this.listPrice = listPrice;
 	}
-	
 
 
 	public String getPropertyType() {
@@ -320,11 +307,19 @@ public class House {
 	}
 
 
-
 	public void setPropertyType(String propertyType) {
 		this.propertyType = propertyType;
 	}
 
+
+	public Integer getBedrooms() {
+		return bedrooms;
+	}
+
+
+	public void setBedrooms(Integer bedrooms) {
+		this.bedrooms = bedrooms;
+	}
 
 
 	public House () {
@@ -332,17 +327,10 @@ public class House {
 	}
 
 
-
-	
-
-	
-
-
-
 	public House(int id, String mls, String address, String city, String zipCode, String zoning, String listAgent,
 			String buyersAgent, String closedDate, Double closedPrice, Double soldConcessions, String listoffice,
 			String selloffice, String area, String subArea, String schoolDistrict, String termsSale, int dom,
-			String listPrice, String propertyType, Integer bedrooms) {
+			String listPrice, String propertyType, Integer bedrooms, Double totalSf, Double finishedSf, Double salePriceSf) {
 		super();
 		this.id = id;
 		this.mls = mls;
@@ -365,6 +353,9 @@ public class House {
 		this.listPrice = listPrice;
 		this.propertyType = propertyType;
 		this.bedrooms = bedrooms;
+		this.totalSf = totalSf;
+		this.finishedSf = finishedSf; 
+		this.salePriceSf = salePriceSf;
 	}
 
 
