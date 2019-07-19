@@ -97,7 +97,11 @@ public class Client {
 		.append("]");
 		return builder.toString();
 	}
-
+	
+	public Client() {
+		
+	}
+	
 	public Client(int id, String firstName, String lastName, String agent, String phone, List<Comment> comments) {
 		super();
 		this.id = id;
@@ -106,10 +110,6 @@ public class Client {
 		this.agent = agent;
 		this.phone = phone;
 		this.comments = comments;
-	}
-	
-	public Client() {
-		
 	}
 
 	
