@@ -554,7 +554,7 @@ public class HouseDAOImpl implements HouseDAO {
 
 	@Override
 	public List<String> getTheDaily() {
-		String qry1 = "select round(avg(closedPrice),2), round(avg(soldConcessions),2), round(avg(dom),2), count(h) from House h where closedDate>='2019-02-18'";
+		String qry1 = "select round(avg(closedPrice),2), round(avg(soldConcessions),2), round(avg(dom),2), count(h) from House h where closedDate>='2019-05-12'";
 //		String qry1 = "select round(avg(closedPrice),2), round(avg(dom),2), count(h) from House h where closedDate BETWEEN CURDATE()-30 AND CURDATE()";
 //		String qry2 = "select round(avg(closedPrice),2), round(avg(dom),2), count(h) from House h where closedDate>=(curdate()-60)";
 		List<String> theDailyDouble = new ArrayList<>(); 
